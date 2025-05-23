@@ -2,8 +2,13 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
     path: '',
-    loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+    redirectTo: '/login',
+    pathMatch: 'full',
   },
   {
     path: 'heroes',
