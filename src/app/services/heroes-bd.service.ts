@@ -27,6 +27,7 @@ export class HeroesBDService {
 
   getHeroes(): any {
   let url = `${URL_HEROES}/heroes`; // Appending /heroes to the base URL
+  console.log('Fetching heroes from:', url); // Logs the full URL
 
   console.log('Fetching heroes from:', url); // Logs the full URL
   return this.http.get(url).pipe(

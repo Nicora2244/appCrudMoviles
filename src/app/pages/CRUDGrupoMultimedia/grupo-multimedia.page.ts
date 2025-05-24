@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton,
-  IonModal, IonInput, IonToggle,IonButtons,
+  IonModal, IonInput, IonToggle,IonButtons, IonGrid, IonRow, IonCol, IonCard
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { GrupoMultimediaService } from '../../services/grupo-multimedia.service';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: [],
   imports: [
     IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton,
-    IonModal, IonInput, IonToggle, IonButtons, FormsModule, CommonModule,
+    IonModal, IonInput, IonToggle, IonButtons, FormsModule, CommonModule, IonGrid, IonRow, IonCol, IonCard
   ],
 })
 export class GrupoMultimediaPage {

@@ -5,7 +5,13 @@ const grupoMultimediaSchema = new mongoose.Schema({
   estado: { type: Boolean, default: true },
   fecha_actualizacion: { type: Date, default: Date.now },
   usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  fecha_creacion: { type: Date, default: Date.now }
+  fecha_creacion: { type: Date, default: Date.now },
+  items: [
+    {
+      type: { type: String, required: true }, // e.g., 'image', 'video'
+      url: { type: String, required: true }  // URL of the multimedia item
+    }
+  ]
 });
 
 module.exports = mongoose.model('GrupoMultimedia', grupoMultimediaSchema);

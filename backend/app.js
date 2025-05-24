@@ -21,7 +21,7 @@ mongoose.connect(mongoURI, {
 
 // Route for grupoMultimedias
 const grupoMultimediasRouter = require('./routes/grupomultimedias');
-app.use('/api/grupomultimedia', grupoMultimediasRouter);
+app.use('/api/grupomultimedias', grupoMultimediasRouter);
 
 const multimediasheroeRoutes = require('./routes/multimediasheroe');
 app.use('/api/multimediasheroe', multimediasheroeRoutes);

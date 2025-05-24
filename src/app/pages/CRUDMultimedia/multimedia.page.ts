@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { 
   IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton,
-  IonModal, IonInput, IonToggle, IonButtons 
+  IonModal, IonInput, IonToggle, IonButtons, IonImg 
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { MultimediaService } from '../../services/multimedia.service';
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton,
     IonModal, IonInput, IonToggle, IonButtons,
-    FormsModule, CommonModule 
+    FormsModule, CommonModule, IonImg 
   ],
 })
 export class MultimediaPage {

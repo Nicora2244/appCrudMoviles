@@ -23,6 +23,17 @@
       <ion-button fill="clear" color="danger" (click)="deleteGroup(grupo)">
         Delete
       </ion-button>
+
+      <!-- Display images for each group (moved inside ion-item) -->
+      <ion-grid *ngIf="grupo.items?.length">
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of grupo.items">
+            <ion-card *ngIf="item.type === 'image'">
+              <img [src]="item.url" alt="Image" />
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 

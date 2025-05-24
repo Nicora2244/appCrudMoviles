@@ -12,8 +12,10 @@
   <ion-list>
     <ion-item *ngFor="let media of medios">
       <ion-label>
-        <h2>{{ media.url }}</h2>
+        <ion-img *ngIf="media.tipo === 'image'" [src]="media.url" style="width: 100px;"></ion-img>
+        <p *ngIf="media.tipo !== 'image'">{{ media.url }}</p>
         <p>Type: {{ media.tipo }}</p>
+        <p>ID: {{ media._id }}</p>  
         <p>Status: <strong [ngClass]="{'active': media.estado, 'inactive': !media.estado}">
           {{ media.estado ? 'Active' : 'Inactive' }}
         </strong></p>
