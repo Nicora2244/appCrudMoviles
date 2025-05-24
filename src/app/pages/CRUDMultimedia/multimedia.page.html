@@ -1,13 +1,61 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Multimedias</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openForm()">Add Multimedia</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <p style="color: red; font-weight: bold;">TEST: If you see this, the page is rendering!</p>
   <ion-list>
     <ion-item *ngFor="let media of medios">
-      {{ media.url }} - {{ media.tipo }}
+      <ion-label>
+        <h2>{{ media.url }}</h2>
+        <p>Type: {{ media.tipo }}</p>
+        <p>Status: <strong [ngClass]="{'active': media.estado, 'inactive': !media.estado}">
+          {{ media.estado ? 'Active' : 'Inactive' }}
+        </strong></p>
+      </ion-label>
+      <ion-button fill="clear" color="primary" (click)="editMedia(media)">Edit</ion-button>
+      <ion-button fill="clear" color="danger" (click)="deleteMedia(media)">Delete</ion-button>
     </ion-item>
   </ion-list>
+
+  <!-- Form Modal -->
+  <ion-modal [isOpen]="showForm" (didDismiss)="closeForm()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ editingMedia ? 'Edit Multimedia' : 'New Multimedia' }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeForm()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">URL</ion-label>
+          <ion-input [(ngModel)]="mediaForm.url"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Type</ion-label>
+          <ion-input [(ngModel)]="mediaForm.tipo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-toggle [(ngModel)]="mediaForm.estado"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Group ID</ion-label>
+          <ion-input [(ngModel)]="mediaForm.IdGrupoMultimedia"></ion-input>
+          <!-- Optional: replace with a select dropdown of groups fetched from backend -->
+        </ion-item>
+        <ion-button expand="block" (click)="saveMedia()">
+          {{ editingMedia ? 'Update' : 'Create' }}
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

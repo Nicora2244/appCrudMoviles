@@ -6,15 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MultimediaHeroeService {
-  private apiUrl = 'http://localhost:3000/api/multimediasheroes';
+  private apiUrl = 'http://localhost:3000/api/multimediasheroe';
 
   constructor(private http: HttpClient) {}
 
   getImagenesPorHeroe(heroeId: string): Observable<any[]> {
-    return this.http.get<any[]>(${this.apiUrl}?heroeId=${heroeId});
+    return this.http.get<any[]>(`${this.apiUrl}/heroe/${heroeId}`);
   }
 
-  asociarImagen(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
-  }
-}   
+  create(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, data);
+  }
+
+  update(id: string, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, data);
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
+}

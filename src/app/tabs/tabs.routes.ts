@@ -3,40 +3,34 @@ import { TabsPage } from './tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'multimedia',
         loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
+          import('../pages/CRUDMultimedia/multimedia.page').then(m => m.MultimediaPage),
       },
       {
-        path: 'tab2',
+        path: 'multimediaheroe',
         loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
+          import('../pages/CRUDMultimedia-Heroe/multimediasheroe.page').then(m => m.MultimediaHeroePage),
       },
       {
-        path: 'tab3',
+        path: 'grupomultimedia',
         loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../pages/CRUDGrupoMultimedia/grupo-multimedia.page').then(m => m.GrupoMultimediaPage),
       },
       {
         path: 'tab4',
         loadComponent: () =>
           import('../pages/heroes/heroes.page').then((m) => m.HeroesPage),
       },
-
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'multimedia',
         pathMatch: 'full',
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full',
   },
 ];

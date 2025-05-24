@@ -49,14 +49,14 @@ export class HeroesPage implements OnInit {
 
   async cargarHeroes() {
     await this.bdHeroes.getHeroes().toPromise().then((data: any) => {
-      this.heroes = data.resp;
+      this.heroes = data;
       console.log("MISHEROES", this.heroes);
     });
   }
 
   async recargarHeroes(id: string) {
     await this.bdHeroes.getHeroes().toPromise().then((data: any) => {
-      this.heroes = data.resp;
+      this.heroes = data;
       console.log('MISHEROES', this.heroes);
     });
 

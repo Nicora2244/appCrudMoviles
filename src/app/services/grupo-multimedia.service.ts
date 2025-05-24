@@ -12,5 +12,17 @@ export class GrupoMultimediaService {
 
   getGrupos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
-  }
+  }
+
+  createGrupo(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, data);
+  }
+
+  updateGrupo(data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${data._id}`, data);
+  }
+
+  deleteGrupo(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
 }

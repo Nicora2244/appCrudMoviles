@@ -1,13 +1,55 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Grupos Multimedia</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openForm()">Add Group</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <p style="color: red; font-weight: bold;">TEST: If you see this, the page is rendering!3</p>
   <ion-list>
     <ion-item *ngFor="let grupo of grupos">
-      {{ grupo.nombre }}
+      <ion-label>
+        <h2>{{ grupo.nombre }}</h2>
+        <p>Status: <strong [ngClass]="{'active': grupo.estado, 'inactive': !grupo.estado}">
+          {{ grupo.estado ? 'Active' : 'inactive' }}
+        </strong></p>
+      </ion-label>
+      <ion-button fill="clear" color="primary" (click)="editGroup(grupo)">
+        Edit
+      </ion-button>
+      <ion-button fill="clear" color="danger" (click)="deleteGroup(grupo)">
+        Delete
+      </ion-button>
     </ion-item>
   </ion-list>
+
+  <!-- Form Modal -->
+  <ion-modal [isOpen]="showForm" (didDismiss)="closeForm()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ editingGroup ? 'Edit Group' : 'New Group' }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeForm()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Group Name</ion-label>
+          <ion-input [(ngModel)]="groupForm.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-toggle [(ngModel)]="groupForm.estado"></ion-toggle>
+        </ion-item>
+        <ion-button expand="block" (click)="saveGroup()">
+          {{ editingGroup ? 'Update' : 'Create' }}
+        </ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

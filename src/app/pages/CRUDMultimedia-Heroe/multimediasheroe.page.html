@@ -5,9 +5,10 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <p style="color: red; font-weight: bold;">TEST: If you see this, the page is rendering!2</p>
   <ion-list>
     <ion-item *ngFor="let img of imagenes">
-      <img [src]="img.url" style="width: 100px;" />
+      <ion-img [src]="img.IdMultimedia?.url" style="width: 100px;"></ion-img>
     </ion-item>
   </ion-list>
 </ion-content>

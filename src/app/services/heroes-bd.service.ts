@@ -11,6 +11,7 @@ export class HeroesBDService {
 
   constructor(private http: HttpClient) { }
 
+  /*
   getHeroes(): any {
     let url = `${URL_HEROES}/heroes`;
 
@@ -22,6 +23,19 @@ export class HeroesBDService {
       })
     );
   }
+  */
+
+  getHeroes(): any {
+  let url = `${URL_HEROES}/heroes`; // Appending /heroes to the base URL
+
+  console.log('Fetching heroes from:', url); // Logs the full URL
+  return this.http.get(url).pipe(
+    map((data) => {
+      console.log('Heroes fetched:', data); // Logs the fetched data
+      return data;
+    })
+  );
+}
 
   getUnHeroe(unHeroe:string):any{
     let url = `${URL_HEROES}/heroes/${unHeroe}`;
@@ -90,8 +104,4 @@ export class HeroesBDService {
       return this.http.put(url, body).pipe(map((data) => data));
     }
   }
-
-  
-
-
 }
