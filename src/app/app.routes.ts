@@ -26,7 +26,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/heroe/heroe.page').then(m => m.HeroePage)
   },
   {
-    path: 'multimediasheroe/:id',
+    path: 'multimediasheroe',
     loadComponent: () => import('./pages/CRUDMultimedia-Heroe/multimediasheroe.page').then(m => m.MultimediaHeroePage)
   },
 ];

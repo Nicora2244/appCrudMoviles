@@ -1,14 +1,24 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Imágenes del Héroe</ion-title>
+    <ion-title>Imágenes por Héroe</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p style="color: red; font-weight: bold;">TEST: If you see this, the page is rendering!2</p>
-  <ion-list>
-    <ion-item *ngFor="let img of imagenes">
-      <ion-img [src]="img.IdMultimedia?.url" style="width: 100px;"></ion-img>
-    </ion-item>
-  </ion-list>
+  <p style="color: red; font-weight: bold;">TEST: If you see this, the page is rendering!</p>
+  <div *ngFor="let hero of heroes">
+    <h2>{{ hero.nombre }}</h2>
+    <div class="image-row">
+      <ion-img *ngFor="let img of hero.multimedia" [src]="img.IdMultimedia?.url" style="width: 100px; margin-right: 10px;"></ion-img>
+    </div>
+  </div>
 </ion-content>
+
+<style>
+  .image-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+</style>

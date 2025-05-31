@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MultimediaHeroeService {
-  private apiUrl = 'http://localhost:3000/api/multimediasheroe';
+  // private apiUrl = 'http://localhost:3000/api/multimediasheroe';
+  private apiUrl = 'https://appcrudmoviles.onrender.com/api/multimediasheroe';
 
   constructor(private http: HttpClient) {}
 

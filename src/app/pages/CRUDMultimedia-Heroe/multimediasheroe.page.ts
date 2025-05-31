@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { HeroesBDService } from '../../services/heroes-bd.service';
 import { MultimediaHeroeService } from '../../services/multimediasheroe.service';
 import { CommonModule } from '@angular/common';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonImg } from '@ionic/angular/standalone';
@@ -11,19 +11,25 @@ import { IonContent, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonImg }
   imports: [CommonModule, IonContent, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonImg],
 })
 export class MultimediaHeroePage implements OnInit {
-  imagenes: any[] = [];
-  heroeId: string = '';
+  heroes: any[] = [];
 
   constructor(
-    private route: ActivatedRoute,
+    private heroesService: HeroesBDService,
     private mhService: MultimediaHeroeService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.heroeId = this.route.snapshot.paramMap.get('id') || '';
-    this.mhService.getImagenesPorHeroe(this.heroeId).subscribe((data: any[]) => {
-      console.log('API response:', data); // <-- Add this line
-      this.imagenes = data;
+    this.heroesService.getHeroes().subscribe((heroes: any[]) => {
+      const requests = heroes.map(hero =>
+        this.mhService.getImagenesPorHeroe(hero._id).toPromise().then(medias => ({
+          ...hero,
+          multimedia: medias
+        }))
+      );
+      Promise.all(requests).then(results => {
+        this.heroes = results;
+        console.log('Heroes with multimedia:', this.heroes);
+      });
     });
   }
 }

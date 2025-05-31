@@ -11,7 +11,8 @@ const grupoMultimediaSchema = new mongoose.Schema({
       type: { type: String, required: true }, // e.g., 'image', 'video'
       url: { type: String, required: true }  // URL of the multimedia item
     }
-  ]
+  ],
+  heroes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Heroe' }] // <-- Add this line
 });
 
 module.exports = mongoose.model('GrupoMultimedia', grupoMultimediaSchema);

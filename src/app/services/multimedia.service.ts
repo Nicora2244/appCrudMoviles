@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MultimediaService {
-  private apiUrl = 'http://localhost:3000/api/multimedias';
+  // private apiUrl = 'http://localhost:3000/api/multimedias';
+  private apiUrl = 'https://appcrudmoviles.onrender.com/api/multimedias';
 
   constructor(private http: HttpClient) {}
 

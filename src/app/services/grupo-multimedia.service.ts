@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GrupoMultimediaService {
-  private apiUrl = 'http://localhost:3000/api/grupomultimedias';
+  // private apiUrl = 'http://localhost:3000/api/grupomultimedias';
+  private apiUrl = 'https://appcrudmoviles.onrender.com/api/grupomultimedias';
 
   constructor(private http: HttpClient) {}
 

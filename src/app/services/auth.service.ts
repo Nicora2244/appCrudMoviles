@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth/login'; // Cambiar por tu API
+  // private apiUrl = 'http://localhost:3000/api/auth/login'; // Cambiar por tu API
+  private apiUrl = 'https://appcrudmoviles.onrender.com/api/auth/login';
 
   constructor(private http: HttpClient) {}
 

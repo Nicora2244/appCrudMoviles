@@ -3,7 +3,7 @@ const GrupoMultimedia = require('../models/grupomultimedia');
 // Get all groups
 exports.getAll = async (req, res) => {
   try {
-    const grupos = await GrupoMultimedia.find();
+    const grupos = await GrupoMultimedia.find().populate('heroes');
     res.json(grupos);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
 // Get a group by ID
 exports.getById = async (req, res) => {
   try {
-    const grupo = await GrupoMultimedia.findById(req.params.id);
+    const grupo = await GrupoMultimedia.findById(req.params.id).populate('heroes');
     if (!grupo) return res.status(404).json({ message: 'Group not found' });
     res.json(grupo);
   } catch (err) {
@@ -32,10 +32,13 @@ exports.create = async (req, res) => {
   }
 };
 
-// Update group
 exports.update = async (req, res) => {
   try {
-    const grupo = await GrupoMultimedia.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const grupo = await GrupoMultimedia.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate('heroes'); // <-- populate here
     if (!grupo) return res.status(404).json({ message: 'Group not found' });
     res.json(grupo);
   } catch (err) {
